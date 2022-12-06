@@ -42,13 +42,15 @@ int scode(int size, char **arr)
     return answer;
 }
 
-// int* division(int number)
-// {
-//     printf("number : %d\n", number);
-//     static int array[4] = {0, 0, 0, 0};
+int* division(int number)
+{
+    // printf("number : %d\n", number);
+    static int array[4] = {0};
+       
+    array[0] = (number / 1000);
+    array[1] = (number / 100) % 10;
+    array[2] = ((number / 10) % 100) % 10;
+    array[3] = number % 10;
 
-//     array[3] = number % 10;
-//     array[2] = (number % 100) % 10;
-    
-//     return array;
-// }
+    return array;
+}
