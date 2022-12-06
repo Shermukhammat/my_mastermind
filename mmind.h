@@ -9,4 +9,6 @@ int scode(int size, char **arr);
 
 int* division(int nuber);
 
+int sycle(int size, char** arr);
+
 #endif

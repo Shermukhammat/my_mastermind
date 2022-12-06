@@ -3,6 +3,35 @@
 #include <stdlib.h>
 #include <string.h>
 
+int my_strlen(char* characters)
+{
+    int answer = 0;
+    for(int z = 0; characters[z] != '\0'; z++)
+    {
+        answer++;
+    }
+    return answer;
+}
+
+int my_num(char* characters)
+{
+    int number = 0;
+    int cycle = 0;
+    for(int z = 0; characters[z] != '\0'; z++)
+    {
+        if(characters[z] >= '0' && characters[z] <= '9')
+        {
+            number++;
+        }
+        cycle++;
+    }
+    if(cycle == number)
+    {
+        return 1;
+    }
+    return 0;
+}
+
 int scode(int size, char **arr)
 {
     int answer = 0 ;
@@ -54,3 +83,30 @@ int* division(int number)
 
     return array;
 }
+
+
+int sycle(int size, char** arr)
+{
+    // printf("size: %d\n", size);
+    // printf("arr[1]: %s\n", arr[1]);
+
+    for(int n = 1; n != size; n++)
+    {
+        // printf("%s\n", arr[n]);
+        if(my_strlen(arr[n]) == 2)
+        {
+            if(arr[n][0] == '-' && arr[n][1] == 't')
+            {
+                if(size >= n+1)
+                {
+                    if(my_num(arr[n+1]) > 0)
+                    {
+                        return atoi(arr[n+1]);
+                    }
+                }
+            }
+        }
+    }
+
+    return 10;
+} 
