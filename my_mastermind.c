@@ -21,9 +21,10 @@ int main(int size, char* array[])
     for(int n = 0; n != my_cycle; n++)
     {
         printf("---\n");
-        printf("Round %d\n>", round);
-        scanf("%d", &inumber);
+        printf("Round %d\n", round);
 
+        input(&inumber);
+        
         well = wellp(inumber, scode_arr);
         miss = misp(inumber, scode_arr);
 

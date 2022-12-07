@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 int my_strlen(char* characters)
 {
@@ -160,5 +161,23 @@ int misp(int answer, int* correct_a)
     }
 
     return respons;
+}
+
+void input(int *number)
+{
+    char copy;
+    int mark = 0;
+    while (mark == 0) 
+    {
+        copy = ' ';
+        printf(">");
+        for(int n = 0; copy != '\0'; n++)
+        {
+            write(0, &copy, 1);
+            printf("%c", copy);
+        }
+    }
+
+    *number = 0;
 }
 
