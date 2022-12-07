@@ -39,13 +39,13 @@ int scode(int size, char **arr)
     // printf("arr: %s\n", arr[1]);
     for(int n = 1; n != size; n++)
     {
-        if(strlen(arr[n]) == 2)
+        if(my_strlen(arr[n]) == 2)
         {
             // printf("1\n");
             if(arr[n][0] == '-' && arr[n][1] == 'c')
             {
                 // printf("2\n");
-                if(size >= n+1 && strlen(arr[n+1] ) == 4)
+                if(size >= n+1 && my_strlen(arr[n+1] ) == 4)
                 {
                     // printf("3\n");
                     answer = atoi(arr[n+1]);
@@ -161,3 +161,4 @@ int misp(int answer, int* correct_a)
 
     return respons;
 }
+
