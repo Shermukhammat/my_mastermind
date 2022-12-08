@@ -54,11 +54,10 @@ char* scode(int size, char **arr)
 {
     //This function accepts 4 numbers from the terminal using the -c command. 
     //If the numbers are entered incorrectly or not, it returns 4 numbers from 0 to 8;
- 
+    
     char* answer[4];
     char respons[4];
-    
-    
+      
     //We look for the -c command;
     for(int n = 1; n != size; n++)
     {
@@ -116,16 +115,14 @@ int* division(int number)
 
 int sycle(int size, char** arr)
 {
-    // printf("size: %d\n", size);
-    // printf("arr[1]: %s\n", arr[1]);
-
+    //We look for the -t command in the given array;
     for(int n = 1; n != size; n++)
     {
-        // printf("%s\n", arr[n]);
         if(my_strlen(arr[n]) == 2)
         {
             if(arr[n][0] == '-' && arr[n][1] == 't')
             {
+                // If a number is entered after the -t command, return that number;
                 if(size >= n+1)
                 {
                     if(my_num(arr[n+1]) > 0)
@@ -137,6 +134,7 @@ int sycle(int size, char** arr)
         }
     }
 
+    // otherwise return 10;
     return 10;
 } 
 
@@ -191,21 +189,68 @@ int misp(int answer, int* correct_a)
     return respons;
 }
 
-// void input(int *number)
-// {
-//     char copy;
-//     while (1) 
-//     {
-//         copy = ' ';
-//         printf(">");
-//         int index = 0;
-//         for(int h = 0; h != 4; h++)
-//         {
-            
-//         }
-//         break;        
-//     }
+char* input()
+{
+    char answer[4] = " ";
+    char depo[100] = " ";
+    int index;
+    char copy;
+    int size;
+    int count;
+    for(int n = 0; n != 1; n++)
+    {
+        copy = ' ';
+        size = 0;
+        index = 0;
+        
+        write(0, ">", 1);
+        for(int i = 0; copy != '\n'; i++)
+        {
+            read(0, &copy, 1);
+            depo[index] = copy;
+            // printf("coppy: <%c>\n", copy);
 
-//     *number = 0;
-// }
+            size++;
+            index++;
+        }
 
+        if(size != 5)
+        {
+            n--;
+            printf("Wrong input!\n");
+            continue;
+        }
+
+
+        count = 0;
+        for(int z = 0; z != 4; z++)
+        {
+            printf("%d : %c\n ", z, depo[z]);
+            if(depo[z] >= '0' && depo[z] <= '8')
+            {
+                count++;                
+            }
+        
+        }
+        if(count == 4)
+        {
+            answer[0] = depo[0];
+            answer[1] = depo[1];
+            answer[2] = depo[2];
+            answer[3] = depo[3];
+        }
+
+        else 
+        {
+            n--;
+            printf("Wrong input!\n");
+            continue;
+        }
+
+        // printf("depo size: %d\n", size);
+        // printf("depo: %s", depo);
+    }
+    printf("input answer: <%s>", answer);
+     
+    return NULL;
+}

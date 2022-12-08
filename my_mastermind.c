@@ -5,18 +5,15 @@ int main(int size, char* array[])
 {
     char* secret_code = scode(size, array);
     printf("answer : %s\n", secret_code);
-    // int* scode_arr = division(secret_code);
     
-    // printf("%d\n", scode_arr[0]);
+    int my_cycle = sycle(size, array);
+    printf("my_cycle: %d\n", my_cycle);
 
-    // int my_cycle = sycle(size, array);
-    // printf("my_cycle: %d\n", my_cycle);
-
-    // printf("Will you find the secret code?\n");
-    // printf("Please enter a valid guess\n");
+    printf("Will you find the secret code?\n");
+    printf("Please enter a valid guess\n");
 
     // int round = 0;
-    // int inumber = 0;
+    // char input_number[4];
     // int well = 1;
     // int miss = 0;
     // for(int n = 0; n != my_cycle; n++)
@@ -24,7 +21,7 @@ int main(int size, char* array[])
     //     printf("---\n");
     //     printf("Round %d\n", round);
 
-    //     input(&inumber);
+        input();
         
     //     well = wellp(inumber, scode_arr);
     //     miss = misp(inumber, scode_arr);
@@ -41,9 +38,6 @@ int main(int size, char* array[])
 
     //     printf("Well placed pieces: %d\n", well);
     //     printf("Misplaced pieces: %d\n", miss);
-
-        
-        
         
     //     round++;
     // }
