@@ -5,7 +5,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-int scode(int size, char **arr);
+char* scode(int size, char **arr);
 
 int* division(int nuber);
 

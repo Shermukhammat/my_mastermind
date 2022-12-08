@@ -4,6 +4,7 @@
 #include <string.h>
 #include <unistd.h>
 
+//FUNCTIONS FOR FUNCTIONS :)
 int my_strlen(char* characters)
 {
     int answer = 0;
@@ -33,43 +34,72 @@ int my_num(char* characters)
     return 0;
 }
 
-int scode(int size, char **arr)
+char* my_random()
 {
-    int answer = 0 ;
-    // printf("size : %d \n", size);
-    // printf("arr: %s\n", arr[1]);
+    static char answer[4];
+    int copy;
+    srand(time(NULL));
+    for(int n = 0; n != 4; n++)
+    {
+        copy = rand() % 9;
+		copy += 48;
+		
+        answer[n] = copy; 
+    }
+    return answer;
+}
+
+//FOR THE MAIN FUNCTION
+char* scode(int size, char **arr)
+{
+    char answer[4];
+    
+    
+    //We look for the -c command;
     for(int n = 1; n != size; n++)
     {
         if(my_strlen(arr[n]) == 2)
         {
-            // printf("1\n");
             if(arr[n][0] == '-' && arr[n][1] == 'c')
             {
-                // printf("2\n");
+                //If information is entered after -c command and consists of 4 characters;
                 if(size >= n+1 && my_strlen(arr[n+1] ) == 4)
                 {
-                    // printf("3\n");
-                    answer = atoi(arr[n+1]);
-                    // printf("answer: %d\n", answer);
-                    return answer;
+                    //If characters 1 -> 8 are entered in reference;
+                    for(int i = 0; i != 4; i++)
+                    {
+                        if(arr[n+1][i] >= '0' && arr[n+1][i] <= '8')
+                        {                                                    
+                            answer[i] = arr[n+1][i];
+                        }
+                        else 
+                        {
+                            printf("answer = random()");
+                            break;
+                        }
+                    }
+                    printf("\n");
+                    printf("function answer: %s\n", answer);
+                    
+                    return NULL;
                 }
             }
         }
     }
     
-    srand(time(NULL));
-    while (0 == 0) 
-    {
-        answer = rand() % 9999;
-        // printf("random answer: %d\n", answer);
-        if(answer >= 1000 && answer <= 9999)
-        {
-            break;
-        }
-    }
+    // srand(time(NULL));
+    // while (0 == 0) 
+    // {
+    //     answer = rand() % 9999;
+    //     // printf("random answer: %d\n", answer);
+    //     if(answer >= 1000 && answer <= 9999)
+    //     {
+    //         break;
+    //     }
+    // }
     
 
-    return answer;
+    return NULL;
 }
 
 int* division(int number)
@@ -163,21 +193,21 @@ int misp(int answer, int* correct_a)
     return respons;
 }
 
-void input(int *number)
-{
-    char copy;
-    int mark = 0;
-    while (mark == 0) 
-    {
-        copy = ' ';
-        printf(">");
-        for(int n = 0; copy != '\0'; n++)
-        {
-            write(0, &copy, 1);
-            printf("%c", copy);
-        }
-    }
+// void input(int *number)
+// {
+//     char copy;
+//     while (1) 
+//     {
+//         copy = ' ';
+//         printf(">");
+//         int index = 0;
+//         for(int h = 0; h != 4; h++)
+//         {
+            
+//         }
+//         break;        
+//     }
 
-    *number = 0;
-}
+//     *number = 0;
+// }
 
