@@ -52,7 +52,11 @@ char* my_random()
 //FOR THE MAIN FUNCTION
 char* scode(int size, char **arr)
 {
-    char answer[4];
+    //This function accepts 4 numbers from the terminal using the -c command. 
+    //If the numbers are entered incorrectly or not, it returns 4 numbers from 0 to 8;
+ 
+    char* answer[4];
+    char respons[4];
     
     
     //We look for the -c command;
@@ -70,36 +74,30 @@ char* scode(int size, char **arr)
                     {
                         if(arr[n+1][i] >= '0' && arr[n+1][i] <= '8')
                         {                                                    
-                            answer[i] = arr[n+1][i];
+                            respons[i] = arr[n+1][i];
                         }
+                        //Otherwise, return 4 random numbers from 0 to -> 8;
                         else 
                         {
-                            printf("answer = random()");
-                            break;
+                            *answer = my_random();
+                            return *answer;
                         }
                     }
+                    //Otherwise, return 4 random numbers from 0 to -> 8;
+                    *answer = respons;
                     printf("\n");
-                    printf("function answer: %s\n", answer);
+                    printf("function answer: %s\n", *answer);
                     
-                    return NULL;
+                    return *answer;
                 }
             }
         }
     }
-    
-    // srand(time(NULL));
-    // while (0 == 0) 
-    // {
-    //     answer = rand() % 9999;
-    //     // printf("random answer: %d\n", answer);
-    //     if(answer >= 1000 && answer <= 9999)
-    //     {
-    //         break;
-    //     }
-    // }
-    
 
-    return NULL;
+
+    //Otherwise, return 4 random numbers from 0 to -> 8;
+    *answer = my_random();
+    return *answer;
 }
 
 int* division(int number)
