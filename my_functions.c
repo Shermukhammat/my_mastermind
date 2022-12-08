@@ -138,55 +138,40 @@ int sycle(int size, char** arr)
     return 10;
 } 
 
-int wellp(int answer, int* correct_a)
+int wellp(char* answer, char* correct_a)
 {
-    int array[4] = {0};
-    int respons = 0;
-
-    if(answer >= 1000 && answer <= 9999)
-    {
-        array[0] = (answer / 1000);
-        array[1] = (answer / 100) % 10;
-        array[2] = ((answer / 10) % 100) % 10;
-        array[3] = answer % 10;
-
-        for (int n = 0; n != 4; n++) 
-        {
-            if(array[n] == correct_a[n])
-            {
-                respons++;
-            }
-        }
-    }
-
-    return respons;
+    int count = 0;
+	for(int n = 0; n != 4; n++)
+	{
+		if(answer[n] == correct_a[n])
+		{
+			count++;
+		}
+	}
+	
+	return count;
 }
 
-int misp(int answer, int* correct_a)
+int misp(char* answer, char* correct_a)
 {
-    int array[4] = {0};
-    int respons = 0;
-
-    if(answer >= 1000 && answer <= 9999)
-    {
-        array[0] = (answer / 1000);
-        array[1] = (answer / 100) % 10;
-        array[2] = ((answer / 10) % 100) % 10;
-        array[3] = answer % 10;
-
-        for(int n = 0; n != 4; n++)
-        {
-            for(int z = 0; z != 4; z++)
-            {
-                if(array[n] == correct_a[z])
-                {
-                    respons++;
-                }
-            }
-        }
-    }
-
-    return respons;
+    int count = 0;
+	for(int n = 0; n != 4; n++)
+	{
+		if(answer[n] != correct_a[n])
+		{
+			for(int i = 0; i != 4; i++)
+			{
+				if(answer[n] == correct_a[i])
+				{
+					count++;
+				}
+			}
+		}
+	}
+	
+	
+	
+	return count;
 }
 
 char* input()
