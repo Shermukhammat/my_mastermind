@@ -2,12 +2,10 @@
 #define MY_FUNCTIONS
 #include <stdio.h>
 #include <string.h>
-#include <string.h>
+#include <unistd.h>
 #include <stdlib.h>
 
 char* scode(int size, char **arr);
-
-int* division(int nuber);
 
 int sycle(int size, char** arr);
 

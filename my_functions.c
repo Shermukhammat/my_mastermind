@@ -50,6 +50,8 @@ char* my_random()
 }
 
 //FOR THE MAIN FUNCTION
+
+//function for secret code
 char* scode(int size, char **arr)
 {
     //This function accepts 4 numbers from the terminal using the -c command. 
@@ -99,20 +101,7 @@ char* scode(int size, char **arr)
     return *answer;
 }
 
-int* division(int number)
-{
-    // printf("number : %d\n", number);
-    static int array[4] = {0};
-       
-    array[0] = (number / 1000);
-    array[1] = (number / 100) % 10;
-    array[2] = ((number / 10) % 100) % 10;
-    array[3] = number % 10;
-
-    return array;
-}
-
-
+//function that returns rounds;
 int sycle(int size, char** arr)
 {
     //We look for the -t command in the given array;
@@ -138,11 +127,13 @@ int sycle(int size, char** arr)
     return 10;
 } 
 
+//function for well place;
 int wellp(char* answer, char* correct_a)
 {
     int count = 0;
 	for(int n = 0; n != 4; n++)
 	{
+        printf("answer: %c correct : %c\n", answer[n], correct_a[n]);
 		if(answer[n] == correct_a[n])
 		{
 			count++;
@@ -152,6 +143,7 @@ int wellp(char* answer, char* correct_a)
 	return count;
 }
 
+//function for miss place;
 int misp(char* answer, char* correct_a)
 {
     int count = 0;
@@ -174,68 +166,72 @@ int misp(char* answer, char* correct_a)
 	return count;
 }
 
+//function for intput;
 char* input()
 {
-    char answer[4] = " ";
-    char depo[100] = " ";
-    int index;
-    char copy;
-    int size;
-    int count;
-    for(int n = 0; n != 1; n++)
+    char answer[4];
+    int sign = 1;
+    char ram;
+    int index = 0;
+    int count = 0;
+
+    //until the correct answer is entered;
+    while (sign > 0)
     {
-        copy = ' ';
-        size = 0;
-        index = 0;
-        
+        //If incorrect information is entered;
+        if(index > 0)
+        {
+            write(0, "Wrong input!\n", 13);
+        }
+        ram = ' ';
         write(0, ">", 1);
-        for(int i = 0; copy != '\n'; i++)
+        int n;
+
+        //Read all the information entered in the terminal and upload 4 characters to the answer
+        for(n = 0; ram != '\n'; n++)
         {
-            read(0, &copy, 1);
-            depo[index] = copy;
-            // printf("coppy: <%c>\n", copy);
+            read(0, &ram, 1);
+            // printf("%c ", ram);
+            // printf("size: %d ", n);
 
-            size++;
-            index++;
-        }
-
-        if(size != 5)
-        {
-            n--;
-            printf("Wrong input!\n");
-            continue;
-        }
-
-
-        count = 0;
-        for(int z = 0; z != 4; z++)
-        {
-            printf("%d : %c\n ", z, depo[z]);
-            if(depo[z] >= '0' && depo[z] <= '8')
+            if(n < 4)
             {
-                count++;                
-            }
-        
+                answer[n] = ram;
+            }        
         }
-        if(count == 4)
+        //If the entered information consists of 4 characters:
+        if(n == 5)
         {
-            answer[0] = depo[0];
-            answer[1] = depo[1];
-            answer[2] = depo[2];
-            answer[3] = depo[3];
+            count = 0;
+            for(int i = 0; i != 4; i++)
+            {
+                //if each character of answer consists of a character from 0 to -> 8:
+                if(answer[i] >= '0' && answer[i] <= '8')
+                {
+                    count++;
+                }
+            }
+            //return the answer;
+            if(count == 4)
+            {
+                break;
+            }
+            //otherwise prompt for re-entry;
+            else 
+            {
+                sign++;
+            }
         }
-
+        //therwise, ask to enter the information again;
         else 
         {
-            n--;
-            printf("Wrong input!\n");
-            continue;
+            sign++;
         }
 
-        // printf("depo size: %d\n", size);
-        // printf("depo: %s", depo);
+        sign--;
+        index++;
     }
-    printf("input answer: <%s>", answer);
-     
-    return NULL;
+    
+    char* respons = answer;
+    return respons;
 }
