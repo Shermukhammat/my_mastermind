@@ -36,7 +36,7 @@ int my_num(char* characters)
 
 char* my_random()
 {
-    static char answer[4];
+    char* answer=(char*)malloc(4*sizeof(char));
     int copy;
     srand(time(NULL));
     for(int n = 0; n != 4; n++)
@@ -46,6 +46,7 @@ char* my_random()
 		
         answer[n] = copy; 
     }
+   
     return answer;
 }
 
@@ -57,8 +58,8 @@ char* scode(int size, char **arr)
     //This function accepts 4 numbers from the terminal using the -c command. 
     //If the numbers are entered incorrectly or not, it returns 4 numbers from 0 to 8;
     
-    char* answer[4];
-    char respons[4];
+    char* answer = (char*) malloc(4 * sizeof(char));
+
       
     //We look for the -c command;
     for(int n = 1; n != size; n++)
@@ -70,26 +71,37 @@ char* scode(int size, char **arr)
                 //If information is entered after -c command and consists of 4 characters;
                 if(size >= n+1 && my_strlen(arr[n+1] ) == 4)
                 {
+                    int count = 0;
                     //If characters 1 -> 8 are entered in reference;
                     for(int i = 0; i != 4; i++)
-                    {
+                    {                       
                         if(arr[n+1][i] >= '0' && arr[n+1][i] <= '8')
                         {                                                    
-                            respons[i] = arr[n+1][i];
+                            count++;
                         }
                         //Otherwise, return 4 random numbers from 0 to -> 8;
                         else 
-                        {
-                            *answer = my_random();
-                            return *answer;
+                        {   
+                            
+                            answer = my_random();
+                            return answer;
                         }
                     }
+                    if(count == 4)
+                    {
+                        for(int i = 0; i != 4; i++)
+                        {
+                            answer[i] = arr[n+1][i];
+                        }
+                        return answer;
+                    }
                     //Otherwise, return 4 random numbers from 0 to -> 8;
-                    *answer = respons;
-                    printf("\n");
-                    printf("function answer: %s\n", *answer);
+                    // printf("respons: %s\n", respons);
                     
-                    return *answer;
+                    // printf("\n");
+                    // printf("function answer: %s\n", *answer);
+                    
+                    return answer;
                 }
             }
         }
@@ -97,8 +109,8 @@ char* scode(int size, char **arr)
 
 
     //Otherwise, return 4 random numbers from 0 to -> 8;
-    *answer = my_random();
-    return *answer;
+    answer = my_random();
+    return answer;
 }
 
 //function that returns rounds;
@@ -133,7 +145,7 @@ int wellp(char* answer, char* correct_a)
     int count = 0;
 	for(int n = 0; n != 4; n++)
 	{
-        printf("answer: %c correct : %c\n", answer[n], correct_a[n]);
+        // printf("answer: %c correct : %c\n", answer[n], correct_a[n]);
 		if(answer[n] == correct_a[n])
 		{
 			count++;
@@ -169,7 +181,7 @@ int misp(char* answer, char* correct_a)
 //function for intput;
 char* input()
 {
-    char answer[4];
+    char* answer = (char*) malloc(4 * sizeof(char));
     int sign = 1;
     char ram;
     int index = 0;
@@ -232,6 +244,6 @@ char* input()
         index++;
     }
     
-    char* respons = answer;
-    return respons;
+    
+    return answer;
 }
