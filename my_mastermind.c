@@ -18,11 +18,7 @@ int main(int size, char* array[])
         printf("---\nRound %d\n", n);
 
         input_number = input();
-        
-
-        // printf("secret code : %s\n", secret_code);
-        // printf("input number : %s\n", input_number);
-        
+   
         well = wellp(input_number, secret_code);
         miss = misp(input_number, secret_code);
 

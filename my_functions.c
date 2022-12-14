@@ -19,11 +19,20 @@ char* my_random()
 {
     char* answer=(char*)malloc(4*sizeof(char));
     srand(time(NULL));
+	int n;
+	start:
+		for(int n = 0; n < 4; n++) answer[n] = (int) (rand() % 9) + 48;
 
-    answer[0] =(int) (rand() % 9) + 48;
-    answer[1] =(int) (rand() % 9) + 48;
-    answer[2] =(int) (rand() % 9) + 48;
-    answer[3] =(int) (rand() % 9) + 48;
+		for(n = 0; n < 4; n++)
+		{
+			// printf("n:%d ", n);
+			for(int z = n+1; z < 4; z++)
+			{
+				// printf(" z:%d ", z);
+				if(answer[n] == answer[z]) goto start;
+			}
+			// printf("\n");
+		}
 
     return answer;
 }
@@ -102,19 +111,6 @@ int wellp(char* answer, char* correct_a)
 int misp(char* answer, char* correct_a)
 {
     int count = 0;
-    // for(int n = 0; n != 4; n++)
-    // {
-    //     if(answer[n] != correct_a[n])
-    //     {
-    //         for(int i = 0; i != 4; i++)
-    //         {
-    //             if(answer[n] == correct_a[i])
-    //             {
-    //                 count++;
-    //             }
-    //         }
-    //     }
-    // }
     for (int i=0; i<4; i++) {
        for (int n=0; n<4; n++) {
            if (correct_a[i] == answer[n] && i != n){
@@ -126,41 +122,6 @@ int misp(char* answer, char* correct_a)
     return count;
 }
 
-
-
-    // char* depo = (char*) malloc(4 * sizeof(char));
-    // char ram;
-    // int n = 0;
-    // int i = 0; // index;
-
-    // char ram;
-    // int n = 0;
-    // start:
-    //     ram = ' ';
-    //     write(0, ">", 1);
-    
-    //     for(n = 0; ram != '\n'; n++)
-    //     {
-    //         read(0, &ram, 1);
-    //         if(n < 4)
-    //         {
-    //             if(n == 0) exit(1);
-    //             if(ram >= '0' && ram <= '8')
-    //             {
-    //                 // write(0,"|", 1);
-    //                 depo[n] = ram;
-    //             }   
-    //             else
-    //             {
-    //                 write(0, "Wrong input!\n", 13);
-    //                 goto start;
-    //             }    
-    //         }
-    //     }
-        
-    //     return depo;
-    // // goto start;
-    //--------------------------------------
 
 char* input()
 {
@@ -195,7 +156,6 @@ char* input()
                         if(depo[n] == depo[z-1]) goto restart;
                     }
                 }
-
-               
+    
     return depo;  
 }
