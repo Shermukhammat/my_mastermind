@@ -1,7 +1,6 @@
 #ifndef MY_FUNCTIONS
 #define MY_FUNCTIONS
 #include <stdio.h>
-#include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
 
