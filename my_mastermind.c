@@ -10,13 +10,11 @@ int main(int size, char* array[])
     printf("Please enter a valid guess\n");
 
     char* input_number;
-    int well;
-    int miss;
-
+    int well, miss;
+    
     for(int n = 0; n < my_cycle; n++)
     {
         printf("---\nRound %d\n", n);
-
         input_number = input();
    
         well = wellp(input_number, secret_code);
@@ -30,7 +28,6 @@ int main(int size, char* array[])
 
         printf("Well placed pieces: %d\n", well);
         printf("Misplaced pieces: %d\n", miss);
-    }
-    
+    } 
     return 0;
 }

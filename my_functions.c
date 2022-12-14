@@ -49,10 +49,7 @@ char* scode(int size, char **arr)
             int count = 0;
             for(int i = 0; i != 4; i++)
             {                       
-                if(arr[n+1][i] >= '0' && arr[n+1][i] <= '8')
-                {                                                    
-                    count++;
-                }
+                if(arr[n+1][i] >= '0' && arr[n+1][i] <= '8') count++;
                 else 
                 {                               
                     answer = my_random();
@@ -62,10 +59,10 @@ char* scode(int size, char **arr)
 
             if(count == 4)
             {
-                answer[0] = arr[n+1][0];
-                answer[1] = arr[n+1][1];
-                answer[2] = arr[n+1][2];
-                answer[3] = arr[n+1][3];
+                for(int i = 0; i < 4; i++)
+                {
+                    answer[i] = arr[n+1][i];
+                }
                 return answer;
             }
             answer = my_random();

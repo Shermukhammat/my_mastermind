@@ -28,7 +28,7 @@ If no information is entered, my cysle function will return 10 and my scode func
 by the number of rounds received. Inside the loop, the input function takes 4 non-identical characters from the user, 0 to -> 8, consisting of 4 
 characters. If the information is not entered correctly, it will ask to enter information again and "wrong input!" consil the record! secret 
 code and the numbers entered by the user, the welp function counts equal signs and returns! if the value returned by the wellp function is equal to 4, 
-the message "congrezy you did it!" will be output to the console!
+the message "Congratz! You did it!" will be output to the console!
 
 ```
 ./my_project argument1 argument2
