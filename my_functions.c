@@ -25,13 +25,10 @@ char* my_random()
 
 		for(n = 0; n < 4; n++)
 		{
-			// printf("n:%d ", n);
 			for(int z = n+1; z < 4; z++)
 			{
-				// printf(" z:%d ", z);
 				if(answer[n] == answer[z]) goto start;
 			}
-			// printf("\n");
 		}
 
     return answer;
@@ -89,7 +86,6 @@ int sycle(int size, char** arr)
     return 10;
 } 
 
-
 int wellp(char* answer, char* correct_a)
 {
     int count = 0;
@@ -109,10 +105,9 @@ int misp(char* answer, char* correct_a)
 {
     int count = 0;
     for (int i=0; i<4; i++) {
-       for (int n=0; n<4; n++) {
-           if (correct_a[i] == answer[n] && i != n){
-               count++;
-           }
+       for (int n=0; n<4; n++) 
+        {
+           if (correct_a[i] == answer[n] && i != n) count++;
         }
     }
 
@@ -124,8 +119,8 @@ char* input()
 {
     char* depo = (char*) malloc(4 * sizeof(char));
     char ram;
-    int n = 0;
-    int sign;
+    int n = 0, sign;
+
     goto start;
         restart:
             write(0, "Wrong input!\n", 13);          
@@ -146,6 +141,7 @@ char* input()
                     if(depo[i] >= '0' && depo[i] <= '8') {}
                     else goto restart;
                 }
+
                 for(int n = 1; n < 4; n++)
                 {
                     for(int z = n; z != 0; z--)
@@ -153,6 +149,6 @@ char* input()
                         if(depo[n] == depo[z-1]) goto restart;
                     }
                 }
-    
+
     return depo;  
 }
